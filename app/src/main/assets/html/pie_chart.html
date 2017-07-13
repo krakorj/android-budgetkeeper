@@ -1,0 +1,129 @@
+<html>
+<head>
+    <!-- DEBUG
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/js/d3.min.js"></script>
+    -->
+    <script type="text/javascript" src="file:///android_asset/js/d3.min.js"></script>
+
+    <script type="text/javascript">
+        function loadPieChart(dataset) {
+            var svg = d3.select("#piechart");
+            var height = 80;
+            var width = 80;
+            var textLabelSuffix = "%";
+
+            showPieChart(dataset, svg, height, width,
+                textLabelSuffix);
+        }
+
+        function showPieChart(dataset, svg, height, width, textLabelSuffix)
+        {
+            var outerRadius = width / 2;
+            var innerRadius = 0;
+
+            // set height/width to match the SVG element
+            svg.attr("height", height).attr("width", width);
+
+            // create a new pie layout
+            var pie = d3.pie();
+
+            // initialize arcs/wedges to span
+            // the radius of the circle
+            var arc = d3.arc()
+                   .innerRadius(innerRadius)
+                   .outerRadius(outerRadius);
+
+            // create groups
+            var arcs = svg.selectAll("g.arc")
+                // bind dataset to pie layout
+                .data(pie(dataset))
+                // create groups
+                .enter()
+                // append groups
+                .append("g")
+                // create arcs
+                .attr("class", "arc")
+                // position each arc in the pie layout
+                .attr("transform", "translate(" +
+                 outerRadius + "," +
+                 outerRadius + ")");
+
+
+            // initialize color scale - refer to
+            // <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales" target="_blank">https://github.com/mbostock/d3/wiki/Ordinal-Scales</a>
+            var color = d3.scaleOrdinal(d3.schemeCategory20c);
+
+            arcs.append("path")
+                .attr("fill", function(d,i) { return color(i); })
+                .attr("d", arc);
+
+            arcs.append("text")
+                .attr("transform", function(d) {
+                  return "translate(" + arc.centroid(d) + ")";
+                })
+
+            .attr("text-anchor", "middle")
+                .text(function(d) { return d.value +
+                 textLabelSuffix; });
+        }
+
+    </script>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        td.label {
+            height: 80px;
+            white-space: nowrap;
+        }
+        td.label > div {            
+            -ms-transform: 
+                translate(0px, 30px)
+                rotate(-90deg); /* IE 9 */
+            -webkit-transform: 
+                translate(0px, 30px)
+                rotate(-90deg); /* Chrome, Safari, Opera */
+            transform: 
+                translate(0px, 30px)
+                rotate(-90deg);
+            width: 30px;
+            font-size: 12px;
+        }
+        td.label > div > span {
+            padding: 5px 10px;
+        }
+        .info {
+            color: #aaaaaa;
+            font-weight: bold;
+            background-color: #eeeeee;
+        }
+        g {
+            font-size: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>  
+        <tr>
+            <td class="label"><div><span class="info">Last Week ...</span></div></td>
+            <td><svg id="piechart" width="150" height="80"></svg></td>
+            <td class="label"><div><span>Car: 20%</span></div></td>
+            <td class="label"><div><span>House: 15%</span></div></td>
+            <td class="label"><div><span>Food: 10%</span></div></td>
+            <td class="label"><div><span>Health: 5%</span></div></td>
+        </tr>
+    </table>
+
+    <!-- DEBUG
+    <script type="text/javascript" >
+    // Debug
+    // Initialize array of data to be bound
+    var dataset  = [10, 15, 20, 55];
+    // Load chart
+    loadPieChart(dataset);
+    </script>
+    -->
+</body>
+</html>
