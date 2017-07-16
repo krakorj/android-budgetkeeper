@@ -1,14 +1,10 @@
-package com.example.krakora.testapplication001.data;
-
-import android.support.annotation.NonNull;
+package com.example.krakora.budgetkeeper.data;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.BaseModel;
-
-import java.util.List;
 
 @Table(name="tracks", database = DatabaseModule.class)
 public class TableTracks extends BaseModel {

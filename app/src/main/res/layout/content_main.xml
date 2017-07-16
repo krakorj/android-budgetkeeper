@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.krakora.testapplication001.MainActivity"
+    tools:context="com.example.krakora.budgetkeeper.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
@@ -31,13 +31,12 @@
             android:layout_gravity="center"
             style="@style/Widget.AppCompat.ProgressBar"/>
 
-        <fragment
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/fragment_main"
-            android:name="com.example.krakora.testapplication001.PieChartFragment"
+            android:name="com.example.krakora.budgetkeeper.PieChartFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <ListView
             android:id="@+id/list_view"

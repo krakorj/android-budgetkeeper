@@ -1,4 +1,4 @@
-package com.example.krakora.testapplication001;
+package com.example.krakora.budgetkeeper;
 
 import org.junit.Test;
 

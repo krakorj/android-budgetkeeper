@@ -1,4 +1,4 @@
-package com.example.krakora.testapplication001;
+package com.example.krakora.budgetkeeper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.krakora.testapplication001", appContext.getPackageName());
+        assertEquals("com.example.krakora.budgetkeeper", appContext.getPackageName());
     }
 }

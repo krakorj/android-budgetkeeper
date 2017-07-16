@@ -1,4 +1,4 @@
-package com.example.krakora.testapplication001.data;
+package com.example.krakora.budgetkeeper.data;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;

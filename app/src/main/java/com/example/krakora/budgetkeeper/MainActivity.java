@@ -1,4 +1,4 @@
-package com.example.krakora.testapplication001;
+package com.example.krakora.budgetkeeper;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,8 +11,8 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.krakora.testapplication001.data.TableArtists;
-import com.example.krakora.testapplication001.data.TableTracks;
+import com.example.krakora.budgetkeeper.data.TableArtists;
+import com.example.krakora.budgetkeeper.data.TableTracks;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.ModelAdapter;
