@@ -1,5 +1,4 @@
 ---
-typora-root-url: docs\images
 typora-copy-images-to: docs\images
 ---
 
@@ -18,7 +17,7 @@ Custom `ListView` , SQLite, Filters
 
 **Nice to have GUI design**
 
-![1500451924580](/1500451924580.png)
+![1500451924580](./docs/images/1500451924580.png)
 
 ### Reporting
 
@@ -30,7 +29,7 @@ Reporting will show statistics in readble form to present in/out flows, pie char
 
 **Nice to have GUI design**
 
-![1500451829563](/1500451829563.png)
+![1500451829563](./docs/images/1500451829563.png)
 
 
 
