@@ -27,7 +27,11 @@ Reporting will show statistics in readble form to present in/out flows, pie char
 
 `WebView` and D3.js, SQLite operations, Filters 
 
-**Nice to have GUI design**
+**GUI design 1**
+
+![1500460148510](docs/images/1500460148510.png)
+
+**GUI design 2**
 
 ![1500451829563](./docs/images/1500451829563.png)
 
