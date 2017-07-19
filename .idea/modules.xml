@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android-budgetkeeper.iml" filepath="$PROJECT_DIR$/android-budgetkeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BudgetKeeper.iml" filepath="$PROJECT_DIR$/BudgetKeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

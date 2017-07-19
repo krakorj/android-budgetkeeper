@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/ivCategoryImage"
+        android:layout_width="15dp"
+        android:scaleType="fitStart"
+        android:background="#fff"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_fiber_new_black_24px"
+        />
+
+    <TextView
+        android:id="@+id/textCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Food"
+        android:maxLines="1"
+        android:layout_toRightOf="@id/ivCategoryImage"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:textColor="#666"/>
+        />
+
+    <TextView
+        android:id="@+id/textTransactionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Butter, milk, ..."
+        android:layout_marginLeft="5dp"
+        android:maxLines="1"
+        android:layout_below="@id/textCategory"
+        android:layout_toRightOf="@id/ivCategoryImage"
+        android:layout_toLeftOf="@+id/textPrice"/>
+
+    <TextView
+        android:id="@+id/textTransactionNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="2017-08-05,12:34 | Lidl | Lorem ipsum dnonor est "
+        android:maxLines="1"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@id/textTransactionName"
+        android:layout_toRightOf="@id/ivCategoryImage"
+        android:layout_toLeftOf="@+id/textPrice"
+        android:textColor="#aaa"/>
+
+    <ImageView
+        android:id="@+id/ivTransactionSign"
+        android:layout_width="20dp"
+        android:scaleType="fitXY"
+        android:layout_height="20dp"
+        android:background="#9e9"
+        android:layout_above="@+id/textTransactionName"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24px"/>
+
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+1234.56 CZK"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/ivTransactionSign"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/textAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Account"
+        android:maxLines="1"
+        android:textColor="#aaa"
+        android:layout_alignBaseline="@+id/textTransactionNotes"
+        android:layout_alignBottom="@+id/textTransactionNotes"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
