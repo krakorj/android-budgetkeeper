@@ -27,7 +27,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<RecyclerView.ViewHo
     TableTracks current;
     int currentPos=0;
 
-    // create constructor to initilize context and data sent from MainActivity
+    // create constructor to initialize context and data sent from MainActivity
     public AdapterTransaction(Context context, List<TableTracks> data){
         this.context=context;
         inflater= LayoutInflater.from(context);
@@ -37,7 +37,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<RecyclerView.ViewHo
     // Inflate the layout when viewholder created
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.transaction_list_row_layout, parent,false);
+        View view=inflater.inflate(R.layout.row_list_transaction, parent,false);
         MyHolder holder=new MyHolder(view);
         return holder;
     }

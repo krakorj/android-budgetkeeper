@@ -25,7 +25,7 @@ public class PieChartFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         boolean attachToRoot = false;
-        topLevelView = inflater.inflate(R.layout.fragment_main, container, attachToRoot);
+        topLevelView = inflater.inflate(R.layout.fragment_chart, container, attachToRoot);
 
         // call now or after some condition is met
         initPieChart();
