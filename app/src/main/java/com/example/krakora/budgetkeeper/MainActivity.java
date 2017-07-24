@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Transaction ListView via RecyclerView
         //      http://androidcss.com/android/fetch-json-data-android/
+        //      https://www.androidhive.info/2016/01/android-working-with-recycler-view/
+        //      https://medium.com/@harivigneshjayapalan/android-recyclerview-implementing-single-item-click-and-long-press-part-ii-b43ef8cb6ad8
         // Create empty list of transaction objects
         List<TableTracks> data = new Select().
                 from(TableTracks.class).
