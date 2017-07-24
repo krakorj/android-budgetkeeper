@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.krakora.budgetkeeper.data.TableArtists;
 import com.example.krakora.budgetkeeper.data.TableTracks;
@@ -21,14 +21,16 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.ModelAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private boolean priceTogle;
+
+    public static interface ClickListener{
+        public void onClick(View view,int position);
+        public void onLongClick(View view,int position);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +76,33 @@ public class MainActivity extends AppCompatActivity {
         // Setup and Handover data to RecyclerView
         RecyclerView rvtl = (RecyclerView) findViewById(R.id.transaction_list);
         final AdapterTransaction transactionAdapter = new AdapterTransaction(MainActivity.this, data);
+        rvtl.setHasFixedSize(true);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        rvtl.setLayoutManager(mLayoutManager);
+        rvtl.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        rvtl.setItemAnimator(new DefaultItemAnimator());
         rvtl.setAdapter(transactionAdapter);
-        rvtl.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
         // priceTogle init
         priceTogle = false;
+        rvtl.addOnItemTouchListener(
+            new RecyclerTouchListener(this, rvtl, new ClickListener() {
+                @Override
+                public void onClick(View view, final int position) {
+                    //Values are passing to activity & to fragment as well
+                    Snackbar.make(view,
+                            "Single Click on position :" + position,
+                            Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                }
+
+                @Override
+                public void onLongClick(View view, int position) {
+                    Snackbar.make(view, "Long press on position :" + position,
+                            Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                }
+        }));
 
 
         // FloatingActionButton
@@ -85,25 +110,6 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ListView change hadling
-                /*
-                // Add data to DB
-                TableArtists a = new TableArtists();
-                a.Name = "\"\"\"Eviiii :*:)";
-                db_artists.insert(a);
-                // Get data from DB to present them to the list
-                List<TableArtists> al = new Select().from(TableArtists.class).queryList();
-                item_list.clear();
-                for (int i = 1; i < al.size(); i++){
-                   item_list.add(al.get(i).Name);
-                };
-                Collections.sort(item_list);
-                // Present it
-                arrayAdapter.notifyDataSetChanged();
-                // Inform
-                Snackbar.make(view, "New item `" + a.Name + "` added!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                */
 
                 // RecyclerView change handling
                 // Inset an item
@@ -127,13 +133,12 @@ public class MainActivity extends AppCompatActivity {
                     queryList();
                 transactionAdapter.updateData(data);
                 // Inform
-                Snackbar.make(view, "Fictive transaction `" + t.Name + "` added!", Snackbar.LENGTH_SHORT)
+                Snackbar.make(view,
+                        "Fictive transaction `" + t.Name + "` added!",
+                        Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
             }
         });
-
-
-
     }
 
     @Override
@@ -164,6 +169,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
 
 }
