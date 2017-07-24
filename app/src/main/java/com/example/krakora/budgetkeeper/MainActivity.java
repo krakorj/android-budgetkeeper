@@ -44,38 +44,21 @@ public class MainActivity extends AppCompatActivity {
         final ModelAdapter<TableTracks> db_tracks = FlowManager.getModelAdapter(TableTracks.class);
         final ModelAdapter<TableArtists> db_artists = FlowManager.getModelAdapter(TableArtists.class);
 
-        // ListView
-        /*
-        ListView lst = (ListView) findViewById(R.id.list_view);
-        // ListView data
-        //  Create an empty List from String Array elements
-        String[] values = new String[] {};
-        final List<String> item_list = new ArrayList<String>(Arrays.asList(values));
-        //  Get data from DB
-        List<TableArtists> ql = new Select().from(TableArtists.class).queryList();
-        for (int i = 1; i < ql.size(); i++){
-            item_list.add(ql.get(i).Name);
-        };
-        Collections.sort(item_list);
-        //  Create an ArrayAdapter from the ListView
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_dropdown_item_1line, item_list);
-        //  Bind data
-        lst.setAdapter(arrayAdapter);
-        */
+        // Price-toggle init
+        priceTogle = false;
 
         // Transaction ListView via RecyclerView
         //      http://androidcss.com/android/fetch-json-data-android/
         //      https://www.androidhive.info/2016/01/android-working-with-recycler-view/
         //      https://medium.com/@harivigneshjayapalan/android-recyclerview-implementing-single-item-click-and-long-press-part-ii-b43ef8cb6ad8
-        // Create empty list of transaction objects
+        //  Create empty list of transaction objects
         List<TableTracks> data = new Select().
                 from(TableTracks.class).
                 where(TableTracks_Table.Name.is("Outcome")).
                 or(TableTracks_Table.Name.is("Income")).
                 orderBy(TableTracks_Table.Name,true).
                 queryList();
-        // Setup and Handover data to RecyclerView
+        //  Setup and RecyclerView
         RecyclerView rvtl = (RecyclerView) findViewById(R.id.transaction_list);
         final AdapterTransaction transactionAdapter = new AdapterTransaction(MainActivity.this, data);
         rvtl.setHasFixedSize(true);
@@ -84,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
         rvtl.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rvtl.setItemAnimator(new DefaultItemAnimator());
         rvtl.setAdapter(transactionAdapter);
-
-        // priceTogle init
-        priceTogle = false;
+        //  On item click listener
         rvtl.addOnItemTouchListener(
             new RecyclerTouchListener(this, rvtl, new ClickListener() {
                 @Override
@@ -105,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                 }
         }));
+        //  Swipe RecyclerView item
+        //      https://medium.com/@ipaulpro/drag-and-swipe-with-recyclerview-b9456d2b1aaf
+        //      https://www.learn2crack.com/2016/02/custom-swipe-recyclerview.html
 
 
         // FloatingActionButton
