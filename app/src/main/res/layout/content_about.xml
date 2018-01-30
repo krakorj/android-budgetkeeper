@@ -8,4 +8,9 @@
     tools:context="com.example.krakora.budgetkeeper.AboutActivity"
     tools:showIn="@layout/activity_about">
 
+
+    <WebView
+        android:id="@+id/about_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
